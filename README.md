@@ -1,2 +1,5 @@
 # web-330
-Enterprise JavaScript II
+# contributors
+Introduction to JavaScript
+Professor Krasso - Bellevue University
+Darius Dinkins - Bellevue University
