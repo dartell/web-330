@@ -15,15 +15,19 @@
 <script>
 
     $(function() {
-        $.ajax({
+        $('#delete1').click(function(){
+            $.ajax({
             url: 'http://httpbin.org/delete',
             dataType: 'json',
             type: 'DELETE',
-            data: { username: 'admin', password: 'secret', email: 'as@me.com'},
+            data: { username: 'fox', password: 'hound', email: 'fox21@me.com'},
             success: function(data, status) {
                 console.log('Username: ' + data.form.username + '\nPassword: ' + data.form.password + '\nEmail: ' + data.form.email + '\nStatus: ' + status);
             }
         })
+
+        })
+        
 
     });
 
