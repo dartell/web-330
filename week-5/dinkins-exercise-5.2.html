@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exercise 5.2 - The Proxy Pattern</title>
+    
+    <!--Bootstrap link-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- jquery Reference Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="#" class="navbar-brand">Home</a>
+
+    </nav>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Example 5.2 -- The Proxy Pattern</h2>
+
+                <button class="btn btn-primary" id="btnExample1">Run the test!</button>
+                
+                <hr>
+
+                <br/> <span class="alert-success" id="proxyExampleOne"></span>
+            </div>
+        </div>
+    </div>
+      
+      
+      
+      
+      
+
+
+    <script>
+      $(function() {
+
+          var car = {
+              make: "Toyota",
+              model: "Corolla",
+              display: function() {
+                //clears the span tag before adding new content
+                $("#proxyExampleOne").html("");
+
+                $("#proxyExampleOne").append("<br/> Make: " + this.make + "<br/>" + "Model: " + this.model);
+
+              }
+
+          };
+
+          $("#btnExample1").click($.proxy(car, "display"));
+          
+      });
+    
+    </script>
+
+    
+  </body>
+</html>

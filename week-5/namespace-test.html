@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>event.namespace test</title>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+ 
+<h1>Namespace example: Click me!</h1>
+
+<p><button>display event.namespace</button></p>
+ 
+<script>
+$( "h1" ).on( "test.anything", function( event ) {
+  alert( event.namespace );
+
+});
+
+$( "h1" ).click(function( event ) {
+  $( "h1" ).trigger( "test.anything" );
+
+});
+
+$( "button" ).on( "test.button-test", function( event ) {
+  alert( event.namespace );
+
+});
+
+$( "button" ).click(function( event ) {
+  $( "button" ).trigger( "test.button-test" );
+
+});
+
+</script>
+
+
+
+ 
+</body>
+</html>

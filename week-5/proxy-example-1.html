@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>event.namespace test</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<!-- Example 1 -->
+
+<h2>Proxy Example 1</h2>
+<button id="btnExample1">Run test</button>
+<br /><span id="proxyExampleOne"></span>
+
+<script>
+var truck = {
+    make: "Ford",
+    model: "F-150",
+    display: function() {
+        $("#proxyExampleOne").append("<br />Make: " + this.make + "<br />" + "Model: "
+        + this.model);
+    }
+};
+
+$("#btnExample1").click($.proxy(truck, "display"));
+
+</script>
+
+
+<body>
