@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>Assignment 7.4</title>
+
+    <!-- Stylesheet - Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+      integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+      crossorigin="anonymous"
+    />
+
+    <!-- JavaScript Libraries -->
+    <script
+    src= "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    ></script>
+    <script src="../knockout-3.5.1.js"></script>
+  </head>
+  <body>
+    <div role="main" class="container">
+        <br/> <br/>
+
+        <h2>A List of Helpful Tutorials</h2>
+
+        <table class="table table-dark table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Link</th>
+                    
+
+                </tr>
+              </thead>
+                    <tbody data-bind="foreach: tutorialAlpha">  <!-- For each binding duplicates a section of markup for each entry in an array, and binds each copy of the markup to the corresponding array item (Knocout.js, 2017)-->
+                        <tr>
+
+                          <td data-bind="text: url"></td>
+                          <td data-bind="text: description"></td>
+                          <td data-bind="text: link"></td>
+                      
+                        </tr>
+
+                        
+                    </tbody>
+                
+            
+        </table>
+        <a data-bind="attr: {href: url" target="_blank">Test</a>
+      </br>
+
+    </div>
+       
+
+    <script>
+//couldn't figure out how to use attr bindings
+//display table view model
+    function TutorialViewModel() { [
+        this.tutorialAlpha = ko.observableArray( [
+            {url: "How to Count", description: "A tutorial on how to count", link: "www.countz.com"},
+            {url: "Cutting Hair ", description: "A tutorial on Cutting Hair", link: "www.haircutmadness.com"},
+            {url: "Curing Chicken Pox" , description: "A tutorial on Curing Chicken Pox ", link: "www.gitridofdapox"},
+            {url: "Vacuum The Normal Way", description: "A tutorial on Vacuuming", link: "www.cleantheoldfashionway.com"},
+            {url: "Taking a Test ", description: "A tutorial on taking a test ", link: "www.pencilsup.net "}
+        ])
+    ]
+
+    }
+//Opening a link view model
+   function OpenViewModel (){
+       this.url = ko.observable("https://www.google.com")
+   }
+
+    ko.applyBindings(new TutorialViewModel());
+    ko.applyBindings(new OpenViewModel);
+    </script>
+  </body>
+</html>

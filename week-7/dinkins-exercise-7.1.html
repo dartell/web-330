@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Example</title>
+</head>
+<!-- Bootstrap-->
+<link
+rel="stylesheet"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+crossorigin="anonymous"
+/>
+
+<!-- JavaScript Libraries -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+
+</script>
+
+
+<script src="../knockout-3.5.1.js">
+
+
+</script>
+
+<body>
+
+    <p data-bind="fadeVisible">First name: <strong data-bind="text: firstName"></strong></p>
+    <p>Last name: <strong data-bind="text: lastName"></strong></p>
+    
+    <p>First name: <input data-bind="value: firstName" /></p>
+    <p>Last name: <input data-bind="value: lastName" /></p>
+
+    <p>Full name: <strong data-bind="text: fullName"></strong></p>
+
+    <button data-bind="click: capitalizeLastName">Go caps </button>
+     
+    <script>
+
+    // ----------------------------------------------------------------------------
+    // Reusable bindings - ideally kept in a separate file
+
+    ko.bindingHandlers.fadeVisible = {
+        init: function(element, valueAccessor) {
+        // Start visible/invisible according to initial value
+        var shouldDisplay = valueAccessor();
+        $(element).add(shouldDisplay);
+    },
+    update: function(element, valueAccessor) {
+        // On update, fade in/out
+        var shouldDisplay = valueAccessor();
+        shouldDisplay ? $(element).fadeIn() : $(element).fadeOut();
+    } 
+};
+
+        // This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
+    function AppViewModel() {
+    this.firstName = ko.observable("Bert");
+    this.lastName = ko.observable("Bertington");
+
+    this.fullName = ko.computed(function() {
+        return this.firstName() + " " + this.lastName();
+
+    }, this);
+
+    this.capitalizeLastName = function() {
+        var currentVal = this.lastName();
+        this.lastName(currentVal.toUpperCase());
+
+    }
+}
+
+// Activates knockout.js
+ko.applyBindings(new AppViewModel());
+
+
+    </script>
+
+       
+</body>
+
+
+
+</html>
+
